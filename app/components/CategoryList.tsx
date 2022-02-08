@@ -1,16 +1,21 @@
-import { useFetcher } from "remix";
+import { Link, useFetcher } from "remix";
 
+// Display each category as a tag
 const CategoryItem = ({
     category
 }: { category: string }) => {
     return (
-        <span className="category-item">{category}</span>
+        <Link to={`/product?category=${category}`} className="category-item">
+            {category}
+        </Link>
     );
 };
 
+// Fetch and display categories only if requested, using useFetcher and /categories resource route
 const CategoryList = () => {
     const categoryFetcher = useFetcher();
 
+    // The submit method of the fetcher object can be used as an alternative to the fetcher Form
     const fetchCategories = () => {
         categoryFetcher.submit({}, { method: 'get', action: '/categories' });
     };
@@ -33,12 +38,16 @@ const CategoryList = () => {
                             }
                         </div>
                         :
-                        
+                        <categoryFetcher.Form
+                            method="get"
+                            action="/categories"
+                        >
                             <button
-                                onClick={fetchCategories}
+                                // onClick={fetchCategories}
                             >
                                 Search product by categories
                             </button>
+                        </categoryFetcher.Form>
             }
         </div>
     );

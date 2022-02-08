@@ -1,6 +1,7 @@
 import { Link } from "remix";
 
-const DownloadJson = () => {
+// Link to a resource route
+const DownloadSpreadsheet = () => {
     return (
         <Link to='/spreadsheet' reloadDocument>
             <button>
@@ -10,4 +11,4 @@ const DownloadJson = () => {
     );
 };
 
-export default DownloadJson;
+export default DownloadSpreadsheet;

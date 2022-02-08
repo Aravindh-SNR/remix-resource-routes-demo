@@ -1,9 +1,13 @@
-import { Modal } from 'react-bootstrap';
-import { Link } from 'remix';
+import { Button, Modal } from 'react-bootstrap';
+import { Link, useLocation } from 'remix';
+import { Product } from '~/types';
 
+// Display details of an individual product in a modal
 const ProductDetails = ({
     product
-}: { product: any }) => {
+}: { product: Product }) => {
+    const { search } = useLocation();
+
     return (
         <Modal
             show={true}
@@ -23,7 +27,7 @@ const ProductDetails = ({
                             <>
                                 <img src={product.image} alt={product.title} style={{ width: '200px', height: '200px' }} />
                                 <p style={{ textTransform: 'capitalize', marginTop: '1rem' }}>{product.category}</p>
-                                <p>{product.description}</p>
+                                <p style={{ textTransform: 'capitalize' }}>{product.description}</p>
                                 <p>Rs. {product.price}</p>
                             </>
                         )
@@ -32,7 +36,9 @@ const ProductDetails = ({
             </Modal.Body>
 
             <Modal.Footer>
-                <Link to='/product'>Close</Link>
+                <Button>
+                    <Link to={`/product${search}`} className='text-white'>Close</Link>
+                </Button>
             </Modal.Footer>
         </Modal>
     );
