@@ -4,7 +4,7 @@ We look at a couple of use cases for resource routes:
 - Fetching a file that has no UI associated
 - Fetching data from computationally expensive APIs only when required, using useFetcher and resource routes, although the example provided is contrived
 
-We also look at a scenario where it might be tempting to use React's state and resource routes but Remix's UI routes are a better alternative.
+We also look at a scenario where it might be tempting to use React's state and resource routes but Remix's nested UI routes are a better alternative.
 
 API used: https://fakestoreapi.com/products
 
